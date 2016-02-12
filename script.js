@@ -1,5 +1,6 @@
 function change(var1)
 {
+  console.log(var1);
   xhr = new XMLHttpRequest();
   xhr.open('POST','traitement.php');
 

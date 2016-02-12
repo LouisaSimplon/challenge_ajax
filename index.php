@@ -16,14 +16,24 @@ require('connectDb.php');
 <select onchange="change(this.value)">
 
 <?php
-$req=sdb->query('SELECT * FROM clients ORDER BY id DESC');
-while ($data=$req->fetch()) {
+$req='SELECT * FROM clients ORDER BY idClient DESC';
+$res=mysqli_query($con,$req)or die("pb req");
+while ($data=$res->fetch_assoc()) {
   $nom=$data['Nom'];
-    $id=$data['Prenom'];
-    echo "<option value=".$id.">$nom</option>";
+ $prenom=$data['Prenom'];
+ $age=$data['Age'];
+ $adresse=$data['Adresse'];
+ $profession=$data['Profession'];
+   $id=$data['idClient'];
+  echo "<option value=".$id.">$prenom</option>";
+
 
 }
- ?>
+
+
+
+?>
 </select>
 <div id="reponse"></div>
-<script type="text/javascript"></script>
+<script src="script.js" type="text/javascript"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>

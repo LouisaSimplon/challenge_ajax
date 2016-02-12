@@ -3,9 +3,13 @@ require('connectDb.php');
 
 $id=$_POST['var'];
 
-$req = $db->query('SELECT * FROM clients WHERE id='.$id);
-while($data = $req->fetch())
-{
-  echo $data['nom'];
+$req='SELECT * FROM clients WHERE idClient='.$id;
+$res=mysqli_query($con,$req)or die("pb req");
+while ($data=$res->fetch_assoc()) {
+  echo $data['Nom'];
+  echo $data['Prenom'];
+  echo $data['Age'];
+  echo $data['Adresse'];
+  echo $data['Profession'];
 }
  ?>
